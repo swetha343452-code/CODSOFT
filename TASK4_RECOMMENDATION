@@ -1,0 +1,120 @@
+# MOVIE DATABASE
+
+movies = [
+    # ACTION
+    {"name": "Street Fight", "genre": "Action", "rating": 4.3},
+    {"name": "Fast Chase", "genre": "Action", "rating": 5.6},
+    {"name": "Mission X", "genre": "Action", "rating": 6.4},
+    {"name": "John Wick", "genre": "Action", "rating": 7.9},
+    {"name": "Mad Max: Fury Road", "genre": "Action", "rating": 8.1},
+    {"name": "Gladiator", "genre": "Action", "rating": 8.5},
+
+    # ROMANCE
+    {"name": "Love Story", "genre": "Romance", "rating": 4.2},
+    {"name": "Forever Us", "genre": "Romance", "rating": 5.0},
+    {"name": "Dear John", "genre": "Romance", "rating": 6.0},
+    {"name": "Titanic", "genre": "Romance", "rating": 7.8},
+    {"name": "La La Land", "genre": "Romance", "rating": 8.0},
+    {"name": "Pride and Prejudice", "genre": "Romance", "rating": 8.2},
+
+    # SCI-FI
+    {"name": "Future World", "genre": "Sci-Fi", "rating": 4.5},
+    {"name": "Time Loop", "genre": "Sci-Fi", "rating": 5.8},
+    {"name": "Oblivion", "genre": "Sci-Fi", "rating": 6.7},
+    {"name": "Arrival", "genre": "Sci-Fi", "rating": 7.9},
+    {"name": "Interstellar", "genre": "Sci-Fi", "rating": 8.6},
+    {"name": "Inception", "genre": "Sci-Fi", "rating": 8.8},
+
+    # ANIMATION
+    {"name": "Animal Tales", "genre": "Animation", "rating": 4.4},
+    {"name": "Magic Forest", "genre": "Animation", "rating": 5.3},
+    {"name": "Toy Story", "genre": "Animation", "rating": 6.9},
+    {"name": "Finding Nemo", "genre": "Animation", "rating": 8.1},
+    {"name": "Up", "genre": "Animation", "rating": 8.2},
+    {"name": "The Lion King", "genre": "Animation", "rating": 8.5},
+]
+
+# UI FUNCTIONS
+
+def banner():
+    print("\n" + "=" * 60)
+    print("🎬 MOVIE RECOMMENDATION SYSTEM")
+    print("📌 Content-Based Filtering Approach")
+    print("=" * 60)
+
+def show_genres():
+    print("\n🎭 Available Genres:")
+    genres = sorted(set(movie["genre"] for movie in movies))
+    for g in genres:
+        print(f" {g}")
+
+# CORE LOGIC 
+
+def recommend_movies(genre, user_rating):
+    lower = user_rating
+    upper = user_rating + 0.9
+
+    # Strict rating range filter
+    matched = [
+        m for m in movies
+        if m["genre"].lower() == genre.lower()
+        and lower <= m["rating"] <= upper
+    ]
+
+    # If no movie found → closest ratings
+    if not matched:
+        matched = sorted(
+            [m for m in movies if m["genre"].lower() == genre.lower()],
+            key=lambda x: abs(x["rating"] - user_rating)
+        )[:3]
+
+    # Sort by rating (high to low)
+    matched.sort(key=lambda x: x["rating"], reverse=True)
+    return matched
+
+def display_movies(movie_list):
+    print("\n🎯 Recommended Movies:\n")
+    for i, movie in enumerate(movie_list, start=1):
+        print(f"{i}. 🎥 {movie['name']}  | ⭐ {movie['rating']}")
+
+# INPUT VALIDATION
+
+def get_valid_rating():
+    while True:
+        try:
+            rating = float(input("Enter rating (0–10): "))
+            if 0 <= rating <= 10:
+                return rating
+            else:
+                print("❌ Rating must be between 0 and 10.")
+        except ValueError:
+            print("❌ Please enter a valid number.")
+
+# MAIN PROGRAM
+
+def main():
+    banner()
+    show_genres()
+
+    while True:
+        genre = input("\nEnter your favorite genre: ").strip()
+        if not any(m["genre"].lower() == genre.lower() for m in movies):
+            print("❌ Invalid genre. Please choose from the list.")
+            continue
+
+        rating = get_valid_rating()
+
+        results = recommend_movies(genre, rating)
+
+        display_movies(results)
+
+        choice = input("\nDo you want to continue? (yes/no): ").lower()
+        if choice != "yes":
+            break
+
+    print("\n🙏 Thank you for using the Recommendation System!")
+
+#  RUN 
+
+if __name__ == "__main__":
+    main()
