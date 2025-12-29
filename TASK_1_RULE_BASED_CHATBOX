@@ -10,8 +10,8 @@ def get_response(user_input):
         return "I am chatbot AI."
 
     # Asking help
-    elif "help" in user_input:
-        return "I can answer qusstions,explain topics, and help with simple tasks."
+    elif "I need help" in user_input:
+        return " Sure. Please tell me your problem."
 
     # Asking about doing
     elif "what are you doing ?" in user_input:
@@ -20,10 +20,12 @@ def get_response(user_input):
     # Asking about AI
     elif "are you availableall the time?" in user_input:
         return "yes,I'm available whenever you open the AI."
-
     # Goodbye
     elif user_input in ["bye", "goodbye", "exit", "quit"]:
         return "Goodbye! Have a great day 😊"
+    #Asking thank you
+    elif "thank you!" in user_input:
+         return " You're Welcome! Happy learning 😊"
 
     # Default response
     else:
