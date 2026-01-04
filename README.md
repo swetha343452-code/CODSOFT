@@ -1,24 +1,28 @@
-# CODSOFT
-# Rule-Based Chatbot
+# CODSOFT Internship Projects
 
-This project is part of **Task 1** for the **CODSOFT Artificial Intelligence Internship**.
+This repository contains the tasks completed during my internship at **CODSOFT**. Each task focuses on different aspects of Artificial Intelligence and Python programming.
 
-## 📌 Description
-This is a simple rule-based chatbot developed using Python.  
-The chatbot responds to user inputs using predefined rules and conditional statements.
+---
 
-## ✨ Features
-- Rule-based responses using if-else conditions
-- Beginner-friendly and easy to understand
-- Demonstrates basic Natural Language Processing concepts
+## 🚀 Tasks Overview
 
-## 🛠 Technologies Used
-- Python
+### 1. Task 1: Rule-Based Chatbot
+A simple chatbot that uses **if-else logic** and **regular expressions** to answer user queries. It can handle basic greetings and frequently asked questions.
+* **Key Skills:** Python, String manipulation, Logic building.
 
-## ▶ How to Run the Project
-1. Open Command Prompt
-2. Navigate to the project folder
-3. Run the following command:
+### 2. Task 2: Tic-Tac-Toe AI
+An interactive Tic-Tac-Toe game where a human player competes against an AI. The AI uses the **Minimax Algorithm** to ensure it never loses.
+* **Key Skills:** Game Theory, Minimax Algorithm, Recursion.
 
-```bash
-python rule_based_chat_box.py
+### 3. Task 4: Recommendation System
+A system that suggests items (like movies or books) to users based on their preferences. It uses techniques like **Collaborative Filtering** or **Content-Based Filtering**.
+* **Key Skills:** Data Analysis, Scikit-learn, Pandas.
+
+---
+
+## 🛠️ How to Run
+1. Clone the repository:
+   `git clone https://github.com/swetha343452-code/CODSOFT.git`
+2. Navigate to the task folder.
+3. Run the python file: `python filename.py`
+4.
